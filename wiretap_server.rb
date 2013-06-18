@@ -14,16 +14,13 @@ require 'dm-core'
 require 'dm-migrations'
 require 'dm-types'
 require 'dm-timestamps'
-require 'redis'
+#require 'redis'
 
 # Configuration
 configure do
   	DataMapper.setup(:default, ENV["DATABASE_URL"])
     redis_uri = URI.parse(ENV["REDISCLOUD_URL"])
-    set :redis, redis = Redis.new(:host => redis_uri.host, :port => redis_uri.port, :password => redis_uri.password)
-    set :do_url, "https://api.digitalocean.com/"
-    set :client_id, ENV["CLIENT_ID"]
-    set :api_key, ENV["API_KEY"]
+    #set :redis, redis = Redis.new(:host => redis_uri.host, :port => redis_uri.port, :password => redis_uri.password)
 end
 
 # Helpers
@@ -102,13 +99,13 @@ class Item
   property :updated_at, DateTime
   property :name, String
   property :description, Text
-  property :cost_credits, Number
-  property :cost_platinum, Number
+  property :cost_credits, Integer
+  property :cost_platinum, Integer
   property :image, URI
-  property :min_level, Number
-  property :ram_used, Number
+  property :min_level, Integer
+  property :ram_used, Integer
   property :slots, Object
-  property :generation, Number
+  property :generation, Integer
   property :show_in_store, Boolean
 end
 
@@ -121,7 +118,7 @@ class Achievement
   property :name, String
   property :locked_description, Text
   property :unlocked_description, Text
-  property :points, Number
+  property :points, Integer
   property :progress_based, Boolean
   property :image, URI
   property :hidden, Boolean
@@ -150,8 +147,8 @@ class Score
   property :updated_at, DateTime
   property :value, Integer
 
-  belongs_to, :leaderboard
-  belongs_to, :user
+  belongs_to :leaderboard
+  belongs_to :user
 end
 
 class Product
@@ -162,7 +159,7 @@ class Product
   property :updated_at, DateTime
   property :download, URI
   property :image, URI
-  property :order, Integer
+  property :ordering, Integer
   property :product_identifier, String
   property :title, String
   property :subtitle, String
@@ -177,8 +174,8 @@ class Message
   property :content, Text
   property :read, Boolean
 
-  belongs_to, :from, 'User'
-  belongs_to, :to, 'User'
+  belongs_to :from, 'User'
+  belongs_to :to, 'User'
 end
 
 class Clan
@@ -191,7 +188,7 @@ class Clan
   property :emblem, URI
   property :influence, Integer
 
-  belongs_to, :leader, 'User'
+  belongs_to :leader, 'User'
   has n, :members, 'User'
 end
 
@@ -202,14 +199,28 @@ class Node
   property :created_at, DateTime
   property :updated_at, DateTime
   property :hostname, String
-  property :ip_address, IPAdress
+  property :ip_address, IPAddress
   property :private, Boolean
   property :location, String #TODO: Check out PostGIS
   property :specs, Object
   property :value, Integer
   property :protected_until, DateTime
 
-  belongs_to, :owner, 'User'
+  belongs_to :owner, 'User'
+end
+
+class Hub
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :created_at, DateTime
+  property :updated_at, DateTime
+  property :hostname, String
+  property :description, Text
+  property :ip_address, IPAddress
+  property :location, String #TODO: Check out PostGIS
+
+  has n, :nodes
 end
 
 DataMapper.finalize
