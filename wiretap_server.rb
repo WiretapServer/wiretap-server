@@ -10,6 +10,10 @@ require 'restclient'
 require 'base64'
 require 'openssl'
 require 'data_mapper'
+require 'dm-core'
+require 'dm-migrations'
+require 'dm-types'
+require 'dm-timestamps'
 require 'redis'
 
 # Configuration
@@ -45,45 +49,170 @@ helpers do
 end
 
 # Data Mapper Models
-class Customer
+class User
+  include DataMapper::Resource
+
+  # Standard User Stuff
+  property :id, Serial
+  property :created_at, DateTime
+  property :updated_at, DateTime
+  property :username, String
+  property :password, BCryptHash
+  property :email, String, :required => true, :unique => true, :format => :email_address
+  property :email_verified, Boolean, :default => false
+  property :facebook_id, String
+  property :facebook_auth_token, String
+
+  # Game Stuff
+  property :level, Integer
+  property :xp, Integer
+  property :energy, Integer
+  property :credits, Integer
+  property :platinum, Integer
+  property :notoriety, Integer
+  property :items, Object
+  property :achievements, Object
+  property :quests, Object
+
+  # Relations
+  has n, :hubs
+  has n, :scores
+end
+
+class Quest
   include DataMapper::Resource
 
   property :id, Serial    
-  property :first_name, String    
-  property :last_name, String
-  property :email, String, :required => true, :unique => true, :format => :email_address
-  property :validated, Boolean, :default => false
   property :created_at, DateTime
-  property :password, BCryptHash
+  property :updated_at, DateTime
+  property :name, String
+  property :description, Text
+  property :min_level, Integer
+  property :difficulty, Integer
 
-  has n, :servers
-  has n, :invoices
+  has n, :rewards, 'Item'
+  has n, :prerequisites, 'Item'
 end
 
-class Server
+class Item
   include DataMapper::Resource
 
   property :id, Serial
-  property :remote_id, Integer
   property :created_at, DateTime
-
-  belongs_to :customer
+  property :updated_at, DateTime
+  property :name, String
+  property :description, Text
+  property :cost_credits, Number
+  property :cost_platinum, Number
+  property :image, URI
+  property :min_level, Number
+  property :ram_used, Number
+  property :slots, Object
+  property :generation, Number
+  property :show_in_store, Boolean
 end
 
-class Invoice
+class Achievement
   include DataMapper::Resource
 
   property :id, Serial
-  property :customer, Integer
-  property :paid, Boolean, :default => false
-  property :amount, Float
   property :created_at, DateTime
+  property :updated_at, DateTime
+  property :name, String
+  property :locked_description, Text
+  property :unlocked_description, Text
+  property :points, Number
+  property :progress_based, Boolean
+  property :image, URI
+  property :hidden, Boolean
 
-  belongs_to :customer
+  has n, :rewards, 'Item'
+end
+
+class Leaderboard
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :created_at, DateTime
+  property :updated_at, DateTime
+  property :name, String
+  property :reverse, Boolean
+  property :geography, String
+
+  has n, :scores
+end
+
+class Score
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :created_at, DateTime
+  property :updated_at, DateTime
+  property :value, Integer
+
+  belongs_to, :leaderboard
+  belongs_to, :user
+end
+
+class Product
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :created_at, DateTime
+  property :updated_at, DateTime
+  property :download, URI
+  property :image, URI
+  property :order, Integer
+  property :product_identifier, String
+  property :title, String
+  property :subtitle, String
+end
+
+class Message
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :created_at, DateTime
+  property :updated_at, DateTime  
+  property :content, Text
+  property :read, Boolean
+
+  belongs_to, :from, 'User'
+  belongs_to, :to, 'User'
+end
+
+class Clan
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :created_at, DateTime
+  property :updated_at, DateTime
+  property :name, String
+  property :emblem, URI
+  property :influence, Integer
+
+  belongs_to, :leader, 'User'
+  has n, :members, 'User'
+end
+
+class Node
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :created_at, DateTime
+  property :updated_at, DateTime
+  property :hostname, String
+  property :ip_address, IPAdress
+  property :private, Boolean
+  property :location, String #TODO: Check out PostGIS
+  property :specs, Object
+  property :value, Integer
+  property :protected_until, DateTime
+
+  belongs_to, :owner, 'User'
 end
 
 DataMapper.finalize
-require  'dm-migrations'
 DataMapper.auto_upgrade!
 
 # Routes
@@ -96,29 +225,29 @@ get '/ping/?' do
 end
 
 post '/register/?' do
-  @customer = Customer.new(
-      :first_name => request['first_name'],
-      :last_name => request['last_name'],
-      :email => request['email'],
-      :password => request['password']
-    )
-  @customer.save
+  # @customer = Customer.new(
+  #     :first_name => request['first_name'],
+  #     :last_name => request['last_name'],
+  #     :email => request['email'],
+  #     :password => request['password']
+  #   )
+  # @customer.save
 end
 
 get '/login/?' do
-  c = Customer.first(:email => request['email'])
-  #puts "Email: " + request['email']
-  if c.password == request['password']
-    # TODO: Create auth token and save in Redis with TTL
-  else
-    logger.error "Login Failed!"
-    return [401, "Invalid Email Address and Password Combination"]
-  end
+  # c = Customer.first(:email => request['email'])
+  # #puts "Email: " + request['email']
+  # if c.password == request['password']
+  #   # TODO: Create auth token and save in Redis with TTL
+  # else
+  #   logger.error "Login Failed!"
+  #   return [401, "Invalid Email Address and Password Combination"]
+  # end
 end
 
 get '/show_all/?' do
-  response = do_web_request("droplets/",nil)
-  logger.info response
+  # response = do_web_request("droplets/",nil)
+  # logger.info response
 end
 
 error do
