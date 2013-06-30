@@ -9,7 +9,7 @@ gem 'pg'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
 # gem 'redis'
-# gem 'newrelic_rpm'
+gem 'newrelic_rpm'
 
 group :development, :test do
 	gem 'rack-test'
