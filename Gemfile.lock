@@ -57,6 +57,7 @@ GEM
     kgio (2.8.0)
     mime-types (1.23)
     multi_json (1.7.3)
+    newrelic_rpm (3.6.1.87)
     pg (0.15.1)
     rack (1.5.2)
     rack-protection (1.5.0)
@@ -85,6 +86,7 @@ DEPENDENCIES
   data_mapper
   dm-postgres-adapter
   json
+  newrelic_rpm
   pg
   rack-test
   rest-client
