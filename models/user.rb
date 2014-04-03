@@ -11,6 +11,7 @@ class User
   property :email_verified, Boolean, :default => false
   property :facebook_id, String
   property :facebook_auth_token, String
+  property :session_key, String
 
   # Game Stuff
   property :level, Integer

@@ -80,7 +80,7 @@ require 'newrelic_rpm'
 # class Quest
 #   include DataMapper::Resource
 
-#   property :id, Serial    
+#   property :id, Serial
 #   property :created_at, DateTime
 #   property :updated_at, DateTime
 #   property :name, String
@@ -171,7 +171,7 @@ require 'newrelic_rpm'
 
 #   property :id, Serial
 #   property :created_at, DateTime
-#   property :updated_at, DateTime  
+#   property :updated_at, DateTime
 #   property :content, Text
 #   property :read, Boolean
 
@@ -283,7 +283,18 @@ class WiretapServer < Sinatra::Application
     #include Rack::Utils
     #alias_method :h, :escape_html
   end
+
+  not_found do
+    'This is nowhere to be found.'
+  end
+
+  error do
+    "Sorry! Something went wrong :( We're on it!"
+    puts "Error: " + env['sinatra.error'].name
+  end
 end
+
+
 
 require_relative 'models/init'
 require_relative 'helpers/init'
