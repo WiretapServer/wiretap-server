@@ -5,6 +5,11 @@ class WiretapServer < Sinatra::Application
     "Pong!"
   end
 
+  get "/secure/?" do
+    api_protected!
+    "Welcome, authenticated client!"
+  end
+
   # post "/login" do
   #   # Define your own check_login
   #   if user = check_login

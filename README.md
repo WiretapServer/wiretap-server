@@ -4,6 +4,21 @@ _Description: This is the Web Service component of the Wiretap game._
 
 ## API Reference
 
+### Authentication
+There are two types of authentication schemes in place when accessing services provided by the WireTap server.
+
+The client (i.e. App) must authentication via HTTP Basic Auth to access the API, and the _User_ must authenticate via either common user/password combination or via 3rd part login (i.e. Facebook).
+
+#### API Authentication (Clients)
+
+API Authentication uses **HTTP Basic Authentication** with the following credentials mapping:
+* Username -> _API Key_
+* Password -> _Secret Key_
+
+#### User Authentication (Users)
+
+_TODO_
+
 #### Authentication
 
 - `POST` /login
@@ -41,7 +56,7 @@ The CCD web service authenticates users via the Corona Labs website using the ex
 
 ### Database
 
-The CCD web service relies on a CouchDB database setup on Cloudant. This may be changed to consolidate DBs on MongoDB, however in order to get up and running ASAP CouchDB was chosen.
+WireTap Server uses PostgreSQL and Redis. Postgres as an operational datastore and Redis as a cache.
 
 ## Deployment
 

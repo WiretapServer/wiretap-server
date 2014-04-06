@@ -17,6 +17,7 @@ require_relative 'message'
 require_relative 'clan'
 require_relative 'node'
 require_relative 'hub'
+require_relative 'client'
 
 DataMapper.finalize
 DataMapper.auto_upgrade!

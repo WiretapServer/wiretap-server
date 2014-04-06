@@ -4,3 +4,6 @@
 
 # require_relative 'nicebytes'
 # MyApp.helpers NiceBytes
+
+require_relative 'apiauth'
+WiretapServer.helpers APIAuth

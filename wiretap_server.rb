@@ -272,7 +272,7 @@ class WiretapServer < Sinatra::Application
 
   configure :production do
     #set :haml, { :ugly=>true }
-    #set :clean_trace, true
+    set :clean_trace, true
   end
 
   configure :development do
