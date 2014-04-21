@@ -1,8 +1,13 @@
 # encoding: utf-8
 class WiretapServer < Sinatra::Application
 
-  def check_login do
+  def check_login
     # TODO:
+  end
+
+  post "/user/signup?" do
+    user = User.create(:name => 'Ali Hamidi', :password => 'passw0rd')
+    return 201, "User Created: " << user.name
   end
 
   post "/user/login?" do
@@ -17,4 +22,14 @@ class WiretapServer < Sinatra::Application
   get "/user/logout?" do
     # TODO
   end
+
+  get "/user?" do
+    users = User.all
+    if users.empty?
+      return 200, "No Users"
+    else
+      return 200, users.first[:name]
+    end
+  end
+
 end
