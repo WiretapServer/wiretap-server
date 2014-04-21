@@ -1,4 +1,4 @@
-# IBT VPS Manager Web Service
+# WireTap Server
 #
 # Author: Ali Hamidi <ahamidi@me.com>
 #

@@ -12,7 +12,7 @@ class PushMessage
   property :created_at, DateTime
   property :updated_at, DateTime
 
-  has n    :devices, 'Device'
-  has n    :channels, 'Channel'
+  has n, :devices, 'Device'
+  has n, :channels, 'Channel'
 
 end

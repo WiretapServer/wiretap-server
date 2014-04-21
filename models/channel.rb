@@ -6,6 +6,6 @@ class Channel
   property :created_at, DateTime
   property :updated_at, DateTime
 
-  has n    :devices, 'Device'
+  has n, :devices, 'Device'
 
 end
