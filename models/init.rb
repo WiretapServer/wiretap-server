@@ -1,7 +1,7 @@
 require 'sequel'
 require 'pg'
 
-DB = Sequel.sqlite('wiretap.db')
+DB = Sequel.sqlite('db/wiretap.db')
 
 require_relative 'user'
 # require_relative 'quest'

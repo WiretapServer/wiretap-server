@@ -8,6 +8,7 @@ gem 'rest-client'
 gem 'json'
 gem 'sequel'
 gem 'pg'
+gem 'bcrypt'
 
 # gem 'redis'
 gem 'newrelic_rpm'

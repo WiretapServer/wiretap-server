@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    bcrypt (3.1.7)
     json (1.7.7)
     mime-types (1.23)
     newrelic_rpm (3.6.1.87)
@@ -26,6 +27,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   json
   newrelic_rpm
   pg
