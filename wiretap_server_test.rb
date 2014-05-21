@@ -1,47 +1,30 @@
-require './ccd'
-require 'test/unit'
+require './wiretap_server'
 require 'rack/test'
+require 'minitest'
+require 'minitest/autorun'
 
 set :environment, :test
 
-class CCDTest < Test::Unit::TestCase
+class WiretapServerTest < Minitest::Test
   include Rack::Test::Methods
 
   def app
-    Sinatra::Application
+    #Sinatra::Application
+    WiretapServer.new
   end
 
   def test_it_replies_with_pong
-    get '/ping'
+    get '/ping.json'
     assert last_response.ok?
-    assert_equal 'Pong', last_response.body
+    res = JSON.parse(last_response.body)
+    assert_equal 'Pong!', res["response"]
   end
 
-  def test_get_about_ccd
-    get '/about/ccd'
+  def test_it_replies_with_version
+    get '/version.json'
     assert last_response.ok?
-    response = JSON.parse(last_response.body)
-    assert_equal "What is the CCD?", response[0]["title"]
+    res = JSON.parse(last_response.body)
+    assert_equal 'Wiretap Server 0.1', res["response"]
   end
 
-  def test_get_about_corona
-    get '/about/corona'
-    assert last_response.ok?
-    response = JSON.parse(last_response.body)
-    assert_equal "Corona Labs is re-inventing how the world builds mobile apps", response[0]["title"]
-  end
-
-  def test_get_study_outline
-    get '/study/outline'
-    assert last_response.ok?
-    response = JSON.parse(last_response.body)
-    assert_equal "First paragraph of the study outline", response[0]["title"]
-  end
-
-  def test_get_study_categories
-    get '/study/categories'
-    assert last_response.ok?
-    response = JSON.parse(last_response.body)
-    assert_equal "The Basics", response[0]["category"]
-  end
 end

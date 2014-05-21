@@ -2,3 +2,9 @@
 
 require_relative 'apiauth'
 WiretapServer.helpers APIAuth
+
+require_relative 'adminauth'
+WiretapServer.helpers AdminAuth
+
+require_relative 'tick'
+WiretapServer.helpers ServerTick
