@@ -1,12 +1,10 @@
 module GooglePush
-  def api_protected!
-    return if api_authorized?
-    headers['WWW-Authenticate'] = 'Basic realm="WireTap Server"'
-    halt 401, "Not authorized\n"
-  end
+def send_message(message, devices)
+  # TODO
+end
 
-  def api_authorized?
-    @api_auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @api_auth.provided? and @api_auth.basic? and @api_auth.credentials and @api_auth.credentials == ['admin', 'admin']
-  end
+def prune_devices
+  # Requests device list digest from Apple
+  # removes "dead" devices
+end
 end

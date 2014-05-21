@@ -1,21 +1,18 @@
 class WiretapServer < Sinatra::Application
 
-  get "/version.json" do
-    return 200, {response: "Wiretap Server 0.1"}.to_json
-  end
-
   get "/time.json" do
-    content_type :json
-    return 200, tick.to_json
+    return jr(200, tick)
   end
 
   get "/ping.json" do
-    content_type :json
-    return 200, {response: "Pong!"}.to_json
+    return jr(200, "Pong!")
   end
 
   get "/info.json" do
-    content_type :json
-    return 200, {response: "Wiretap Server 0.1"}.to_json
+    info = Hash.new
+    info[:version] = WIRETAP_SERVER_VERSION
+    info[:name] = "Wiretap Server"
+    info[:author] = "Ali Hamidi"
+    return jr(200, info)
   end
 end

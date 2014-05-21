@@ -1,5 +1,5 @@
 module ApplePush
-  def send_message
+  def send_message(message, devices)
     # TODO
   end
 

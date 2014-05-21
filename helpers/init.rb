@@ -8,3 +8,6 @@ WiretapServer.helpers AdminAuth
 
 require_relative 'tick'
 WiretapServer.helpers ServerTick
+
+require_relative 'json_response'
+WiretapServer.helpers JsonResponse

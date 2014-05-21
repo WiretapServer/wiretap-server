@@ -41,9 +41,15 @@ class WiretapServer < Sinatra::Application
     user = User.first(:email => data['email'])
 
     if user && BCrypt::Password.new(user[:password]) == data['password']
-      return 200, "Welcome"
+      # TODO:
+      # - Generate & save new session token
+      # - Return new session token
+      res_hash = Hash.new
+      res_hash[:response] = "Welcome"
+      res_hash[:user_id] = user[:id]
+      return jr(200, res_hash)
     else
-      return 403, "Username or Password is incorrect."
+      return jr(403, "Username or Password is incorrect.")
     end
   end
 

@@ -2,8 +2,8 @@
 
 ## 0.1
 * [ ] Admin - Admin permissions
-* [ ] Server - Info
-* [ ] Server - Tick
+* [x] Server - Info
+* [x] Server - Tick
 * [ ] User - Registration
 * [ ] User - Profile management
 * [ ] User - Password recovery

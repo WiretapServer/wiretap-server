@@ -11,6 +11,8 @@ require 'base64'
 require 'openssl'
 require 'newrelic_rpm'
 
+WIRETAP_SERVER_VERSION = "0.1"
+
 class WiretapServer < Sinatra::Application
   enable :sessions
   set :session_secret, 'fzyv4w4B61TQx6G'
