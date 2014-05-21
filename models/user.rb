@@ -6,6 +6,7 @@ DB.create_table? :users do
   String  :name
   String  :password
   String  :password_salt
+  String  :session_token
 
   Timestamp  :created_at
   Timestamp  :updated_at

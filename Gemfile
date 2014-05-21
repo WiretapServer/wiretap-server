@@ -14,6 +14,7 @@ gem 'bcrypt'
 gem 'newrelic_rpm'
 
 group :development, :test do
+	gem 'minitest'
 	gem 'rack-test'
 	gem 'sqlite3'
 end

@@ -2,3 +2,5 @@
 require_relative 'ping'
 require_relative 'main'
 require_relative 'user'
+require_relative 'admin'
+require_relative 'info'

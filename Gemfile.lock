@@ -4,6 +4,7 @@ GEM
     bcrypt (3.1.7)
     json (1.7.7)
     mime-types (1.23)
+    minitest (5.3.3)
     newrelic_rpm (3.6.1.87)
     pg (0.15.1)
     puma (2.4.0)
@@ -29,6 +30,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   json
+  minitest
   newrelic_rpm
   pg
   puma

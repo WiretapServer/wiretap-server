@@ -13,6 +13,7 @@ require 'newrelic_rpm'
 
 class WiretapServer < Sinatra::Application
   enable :sessions
+  set :session_secret, 'fzyv4w4B61TQx6G'
 
   configure :production do
     #set :haml, { :ugly=>true }
