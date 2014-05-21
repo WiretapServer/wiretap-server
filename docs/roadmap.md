@@ -78,7 +78,15 @@
 * [ ] Analytics - IAP
 * [ ] Analytics - CMS
 
-## 1.0
+## 1.0 - Release
+* [ ] Documentation - Admin guide
+* [ ] Documentation - Deployment guide
+* [ ] Documentation - Tutorials
+* [ ] Community - Google group
+* [ ] Website - Update
+* [ ] Website - Blog
+
+## 1.1
 * [ ] Scripting - Custom Code
 * [ ] Scripting - User Lib
 * [ ] Scripting - Leaderboard Lib
@@ -90,8 +98,12 @@
 * [ ] Scripting - CMS Lib
 * [ ] Scripting - Notifications Lib
 
-## 1.1
+## 1.2
 * [ ] Client SDK - iOS
 * [ ] Client SDK - Android
 * [ ] Client SDK - Windows Phone
 * [ ] Client SDK - Windows Desktop
+
+## 1.3
+* [ ] Server - Export data
+* [ ] Server - Log browser
