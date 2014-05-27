@@ -4,6 +4,7 @@
 * [ ] Admin - Admin permissions
 * [x] Server - Info
 * [x] Server - Tick
+* [ ] Server - API authentication
 * [ ] User - Registration
 * [ ] User - Profile management
 * [ ] User - Password recovery

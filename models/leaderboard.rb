@@ -1,12 +1,15 @@
-class Leaderboard
-  include DataMapper::Resource
+# Leaderboard Class
+class Leaderboard < Sequel::Model
+  plugin :validation_helpers
+  plugin :timestamps, :update_on_create => true
 
-  property :id, Serial
-  property :created_at, DateTime
-  property :updated_at, DateTime
-  property :name, String
-  property :reverse, Boolean
-  property :geography, String
+  # Validation
+  def validate
+    super
+    validates_presence [:name]
+    validates_unique(:name)
+  end
 
-  has n, :scores
+  # Relations
+  one_to_many :scores
 end
