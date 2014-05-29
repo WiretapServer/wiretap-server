@@ -11,19 +11,17 @@ module UserAuth
   end
 
   def get_user
-    basic_auth ||= Rack::Auth::Basic::Request.new(request.env)
-    return User.find(:session_token => basic_auth.credentials[1])
+    return User.find(:session_token => request.env["HTTP_X_USER_SESSION"])
   end
 
   def user_protected!
     return if user_authorized?
-    headers['WWW-Authenticate'] = 'Basic realm="WireTap Server"'
-    halt 401, "Not authorized\n"
   end
 
   def user_authorized?
-    basic_auth ||= Rack::Auth::Basic::Request.new(request.env)
-    user = get_user if basic_auth.provided? and basic_auth.basic?
+    session_token = request.env["HTTP_X_USER_SESSION"]
+    p session_token
+    user = get_user if session_token
     return true if user
   end
 
