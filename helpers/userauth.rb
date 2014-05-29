@@ -20,7 +20,6 @@ module UserAuth
 
   def user_authorized?
     session_token = request.env["HTTP_X_USER_SESSION"]
-    p session_token
     user = get_user if session_token
     return true if user
   end

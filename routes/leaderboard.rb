@@ -32,10 +32,9 @@ class WiretapServer < Sinatra::Application
   end
 
   post "/leaderboards/:id/score.json" do
-    # TODO:
-    # - Need to get user from user session/auth
-    user = User.first()
-    p user.pk
+    user_protected!
+    user = get_user
+    p user.inspect()
 
     request.body.rewind
     data = JSON.parse request.body.read

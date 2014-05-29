@@ -4,14 +4,6 @@ require 'bcrypt'
 
 class WiretapServer < Sinatra::Application
 
-  def check_login
-    # TODO:
-    # - Lookup user based on Email
-    # - Hash provided password and compare to stored
-    # - If good, return user ID
-    # - Else, return error
-  end
-
   post "/user/signup.json" do
     request.body.rewind
     data = JSON.parse request.body.read
@@ -30,10 +22,6 @@ class WiretapServer < Sinatra::Application
   end
 
   post "/user/login.json" do
-    # TODO:
-    # - If good, return session token
-    # - Else return error
-
     request.body.rewind
     data = JSON.parse request.body.read
 
@@ -41,9 +29,6 @@ class WiretapServer < Sinatra::Application
     user = User.first(:email => data['email'])
 
     if user && BCrypt::Password.new(user[:password]) == data['password']
-      # TODO:
-      # - Generate & save new session token
-      # - Return new session token
       res_hash = Hash.new
       res_hash[:user_id] = user[:id]
 
@@ -57,8 +42,6 @@ class WiretapServer < Sinatra::Application
   end
 
   get "/user/logout.json" do
-    # TODO:
-    # - Delete session
     user_protected!
     user = get_user
     user[:session_token] = nil
