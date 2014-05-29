@@ -45,8 +45,11 @@ class WiretapServer < Sinatra::Application
       # - Generate & save new session token
       # - Return new session token
       res_hash = Hash.new
-      res_hash[:response] = "Welcome"
       res_hash[:user_id] = user[:id]
+
+      # Generate new session_token
+      res_hash[:session_token] = gen_token(user)
+
       return jr(200, res_hash)
     else
       return jr(403, "Username or Password is incorrect.")
