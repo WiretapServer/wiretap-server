@@ -59,6 +59,12 @@ class WiretapServer < Sinatra::Application
   get "/user/logout.json" do
     # TODO:
     # - Delete session
+    user_protected!
+    user = get_user
+    user[:session_token] = nil
+    user.save
+
+    return jr(200, "Successfully logged out!")
   end
 
   get "/user/ping.json" do

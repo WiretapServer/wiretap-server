@@ -10,8 +10,9 @@ module UserAuth
     return st
   end
 
-  def get_user(token)
-    return User.find(:session_token => token[1])
+  def get_user
+    basic_auth ||= Rack::Auth::Basic::Request.new(request.env)
+    return User.find(:session_token => basic_auth.credentials[1])
   end
 
   def user_protected!
@@ -22,7 +23,7 @@ module UserAuth
 
   def user_authorized?
     basic_auth ||= Rack::Auth::Basic::Request.new(request.env)
-    user = get_user(basic_auth.credentials) if basic_auth.provided? and basic_auth.basic?
+    user = get_user if basic_auth.provided? and basic_auth.basic?
     return true if user
   end
 
