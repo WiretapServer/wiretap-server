@@ -11,6 +11,6 @@ class User < Sequel::Model
   end
 
   # Relations
-  one_to_many :hubs
+  #one_to_many :hubs
   one_to_many :scores
 end

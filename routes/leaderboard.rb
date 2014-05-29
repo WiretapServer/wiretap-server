@@ -25,11 +25,34 @@ class WiretapServer < Sinatra::Application
   end
 
   get "/leaderboards/:id.json" do
-    return jr(200, "Leaderboard " << params[:id])
+    score_list = Score.find(:leaderboard => Leaderboard[:id])
+    # TODO:
+    # - Paginate results
+    return jr(200, {:response =>score_list.values})
   end
 
   post "/leaderboards/:id/score.json" do
-    # Score submission
+    # TODO:
+    # - Need to get user from user session/auth
+    user = User.first()
+    p user.pk
+
+    request.body.rewind
+    data = JSON.parse request.body.read
+
+    # TODO:
+    # - Validate score based on type and ordering
+    score = Score.find_or_create(
+      :user => user,
+      :leaderboard => Leaderboard[params[:id]]
+    )
+
+    score[:score] = data["score"]
+    score[:country] = data["country"] if data["country"]
+    score[:city] = data["city"] if data["city"]
+
+    score.save()
+
     return jr(201, "Score Created!")
   end
 end

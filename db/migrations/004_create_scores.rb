@@ -4,8 +4,8 @@ Sequel.migration do
     create_table(:scores) do
       primary_key :id
 
-      Integer  :user
-      Integer  :leaderboard
+      Integer  :user_id
+      Integer  :leaderboard_id
       Float    :score
       String   :country #2 Digit Country Code
       String   :city

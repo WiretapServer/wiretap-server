@@ -6,8 +6,8 @@ class Score < Sequel::Model
   # Validation
   def validate
     super
-    validates_presence [:name]
-    validates_unique([:name, :leaderboard]) # Only allow 1 score per user per leaderboard
+    validates_presence [:user]
+    validates_unique([:user, :leaderboard]) # Only allow 1 score per user per leaderboard
   end
 
   # Relations
