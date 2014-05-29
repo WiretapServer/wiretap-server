@@ -1,6 +1,7 @@
 require 'SecureRandom'
 
 module UserAuth
+
   def gen_token(user)
     p "Generating session token for user: " << user[:name]
     st = SecureRandom.hex(16)
@@ -8,4 +9,21 @@ module UserAuth
     user.save()
     return st
   end
+
+  def get_user(token)
+    return User.find(:session_token => token[1])
+  end
+
+  def user_protected!
+    return if user_authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="WireTap Server"'
+    halt 401, "Not authorized\n"
+  end
+
+  def user_authorized?
+    basic_auth ||= Rack::Auth::Basic::Request.new(request.env)
+    user = get_user(basic_auth.credentials) if basic_auth.provided? and basic_auth.basic?
+    return true if user
+  end
+
 end

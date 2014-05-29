@@ -61,4 +61,9 @@ class WiretapServer < Sinatra::Application
     # - Delete session
   end
 
+  get "/user/ping.json" do
+    user_protected!
+    return 200
+  end
+
 end
