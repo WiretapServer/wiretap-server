@@ -34,7 +34,6 @@ class WiretapServer < Sinatra::Application
   post "/leaderboards/:id/score.json" do
     user_protected!
     user = get_user
-    p user.inspect()
 
     request.body.rewind
     data = JSON.parse request.body.read
