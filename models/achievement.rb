@@ -6,8 +6,8 @@ class Achievement < Sequel::Model
   # Validation
   def validate
     super
-    validates_presence [:name]
-    validates_unique(:name)
+    validates_presence [:achievement_name]
+    validates_unique(:achievement_name)
   end
 
   # Relations
