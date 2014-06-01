@@ -8,7 +8,6 @@ gem 'json'
 gem 'sequel'
 gem 'pg'
 gem 'bcrypt'
-gem 'securerandom'
 
 # gem 'redis'
 gem 'newrelic_rpm'
