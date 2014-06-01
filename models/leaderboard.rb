@@ -6,8 +6,8 @@ class Leaderboard < Sequel::Model
   # Validation
   def validate
     super
-    validates_presence [:name]
-    validates_unique(:name)
+    validates_presence [:leaderboard_name]
+    validates_unique(:leaderboard_name)
   end
 
   # Relations

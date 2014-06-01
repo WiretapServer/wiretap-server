@@ -4,8 +4,8 @@ Sequel.migration do
     create_table(:leaderboards) do
       primary_key :id
 
-      String  :name
-      String  :type
+      String  :leaderboard_name
+      String  :leaderboard_type
       Boolean :reverse #if true then descending
 
       Timestamp  :created_at

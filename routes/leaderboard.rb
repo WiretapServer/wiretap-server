@@ -17,8 +17,8 @@ class WiretapServer < Sinatra::Application
     data = JSON.parse request.body.read
 
     lb = Leaderboard.create({
-        :name => data["name"],
-        :type => data["type"],
+        :leaderboard_name => data["name"],
+        :leaderboard_type => data["type"],
         :reverse => data["reverse"]
       })
     return jr(201, "New Leaderboard Created: " << lb[:id].to_s)

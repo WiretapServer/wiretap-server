@@ -17,12 +17,12 @@ class WiretapServer < Sinatra::Application
     data = JSON.parse request.body.read
 
     ach = Achievement.create({
-        :name => data["name"],
+        :achievement_name => data["name"],
         :locked_description   => data["locked_description"],
         :unlocked_description => data["unlocked_description"],
         :points => data["points"],
         :image => data["image"],
-        :type => data["type"],
+        :achievement_type => data["type"],
         :hidden => data["hidden"]
       })
     return jr(201, "New Achievement Created: " << ach[:id].to_s)

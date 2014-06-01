@@ -21,7 +21,7 @@ class WiretapServer < Sinatra::Application
 
     device = Device.create({
         :user => user,
-        :type => data["type"],
+        :platform_type => data["type"],
         :device_identifier => data["device_identifier"],
         :status => "active"
       })

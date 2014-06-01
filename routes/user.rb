@@ -13,7 +13,7 @@ class WiretapServer < Sinatra::Application
 
     # Create the user
     user = User.create({
-        :name => data['name'],
+        :user_name => data['name'],
         :password => password_hash,
         #:password_salt => password_salt,
         :email => data['email'].downcase
