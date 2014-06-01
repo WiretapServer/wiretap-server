@@ -28,4 +28,16 @@ class WiretapServer < Sinatra::Application
     return jr(201, "New Device Registered: " << device[:id].to_s)
   end
 
+  post "/users/:id/push.json" do
+    admin_protected!
+
+    # Get the user's device(s)
+    device_list = Device.where(:user => User[:id]).each { |row|
+      p row.inspect()
+      send_push(row, "hello")
+    }
+
+    return 200
+  end
+
 end

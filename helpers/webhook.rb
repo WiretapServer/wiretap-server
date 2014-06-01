@@ -1,3 +1,5 @@
+require 'rest_client'
+
 module WebHook
   # Makes a http request to the target endpoint passing contents as data
   def webhook(endpoint, content)
@@ -6,6 +8,9 @@ module WebHook
     # - Make webrequest
     # - If success return success
     # - If error, return error
-    return 200
+
+    response = RestClient.post endpoint, content.to_json, :content_type => :json
+
+    return response.code, response
   end
 end
