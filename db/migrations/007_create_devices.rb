@@ -17,7 +17,7 @@ Sequel.migration do
 
       String  :user_id
       String  :device_identifier
-      String  :platfom_type # SEE Types list above
+      String  :platform_type # SEE Types list above
       Integer :badge
       String  :status # Active, Disabled, Deleted
 

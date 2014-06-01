@@ -4,9 +4,9 @@ Sequel.migration do
     create_table(:unlocked_achievements) do
       primary_key :id
 
-      String  :user_id
-      String  :achievement_id
-      Integer :progress #0-100 for progress
+      Integer  :user_id
+      Integer  :achievement_id
+      Integer  :progress #0-100 for progress
 
       Timestamp  :created_at
       Timestamp  :updated_at
