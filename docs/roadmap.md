@@ -1,7 +1,7 @@
 # Wiretap Server Roadmap
 
 ## 0.1
-* [ ] Admin - Admin permissions
+* [x] Admin - Admin permissions
 * [x] Server - Info
 * [x] Server - Tick
 * [ ] Server - API authentication
@@ -11,9 +11,9 @@
 * [x] Leaderboards - Leaderboard management
 * [x] Leaderboards - Submit score
 * [x] Leaderboards - Retrieve scores
-* [ ] Achievements - Achievement management
-* [ ] Achievements - Unlock achievement (Binary)
-* [ ] Achievements - Unlock achievement (Progress)
+* [x] Achievements - Achievement management
+* [x] Achievements - Unlock achievement (Binary)
+* [x] Achievements - Unlock achievement (Progress)
 
 ## 0.2
 * [ ] Push Notification - iOS
