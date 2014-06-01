@@ -1,16 +1,15 @@
-class Achievement
-  include DataMapper::Resource
+# Achievements Class
+class Achievement < Sequel::Model
+  plugin :validation_helpers
+  plugin :timestamps, :update_on_create => true
 
-  property :id, Serial
-  property :created_at, DateTime
-  property :updated_at, DateTime
-  property :name, String
-  property :locked_description, Text
-  property :unlocked_description, Text
-  property :points, Integer
-  property :progress_based, Boolean
-  property :image, URI
-  property :hidden, Boolean
+  # Validation
+  def validate
+    super
+    validates_presence [:name]
+    validates_unique(:name)
+  end
 
-  has n, :rewards, 'Item'
+  # Relations
+  #one_to_many :items #Might want to award items on unlock
 end

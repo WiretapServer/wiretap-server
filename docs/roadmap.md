@@ -5,12 +5,12 @@
 * [x] Server - Info
 * [x] Server - Tick
 * [ ] Server - API authentication
-* [ ] User - Registration
+* [x] User - Registration
 * [ ] User - Profile management
 * [ ] User - Password recovery
-* [ ] Leaderboards - Leaderboard management
-* [ ] Leaderboards - Submit score
-* [ ] Leaderboards - Retrieve scores
+* [x] Leaderboards - Leaderboard management
+* [x] Leaderboards - Submit score
+* [x] Leaderboards - Retrieve scores
 * [ ] Achievements - Achievement management
 * [ ] Achievements - Unlock achievement (Binary)
 * [ ] Achievements - Unlock achievement (Progress)
