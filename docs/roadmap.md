@@ -16,6 +16,7 @@
 * [x] Achievements - Unlock achievement (Progress)
 
 ## 0.2
+* [ ] Push Notification - Device Management
 * [ ] Push Notification - iOS
 * [ ] Push Notification - Android
 * [ ] Push Notification - Windows Phone
