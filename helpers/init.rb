@@ -14,3 +14,6 @@ WiretapServer.helpers ServerTick
 
 require_relative 'json_response'
 WiretapServer.helpers JsonResponse
+
+require_relative 'webhook'
+WiretapServer.helpers WebHook
