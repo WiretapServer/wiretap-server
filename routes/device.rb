@@ -31,12 +31,10 @@ class WiretapServer < Sinatra::Application
   post "/users/:id/push.json" do
     admin_protected!
 
-    # Get the user's device(s)
-    device_list = Device.where(:user => User[:id]).each { |row|
-      p row.inspect()
-      send_push(row, "hello")
-    }
+    request.body.rewind
+    data = JSON.parse request.body.read
 
+    send_push(User[params[:id]], data)
     return 200
   end
 

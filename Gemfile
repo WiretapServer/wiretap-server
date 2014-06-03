@@ -9,6 +9,7 @@ gem 'sequel'
 gem 'pg'
 gem 'bcrypt'
 gem 'rest_client'
+gem 'sidekiq'
 
 # gem 'redis'
 gem 'newrelic_rpm'

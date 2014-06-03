@@ -15,8 +15,8 @@ WiretapServer.helpers ServerTick
 require_relative 'json_response'
 WiretapServer.helpers JsonResponse
 
-require_relative 'push_router'
-WiretapServer.helpers PushRouter
+require_relative 'push_mapper'
+WiretapServer.helpers PushMapper
 
 require_relative 'webhook'
 WiretapServer.helpers WebHook
