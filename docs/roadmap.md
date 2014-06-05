@@ -89,6 +89,13 @@
 * [ ] Website - Blog
 
 ## 1.1
+* [ ] Multiplayer - Match Management
+* [ ] Multiplayer - Turn-based
+
+## 1.2
+* [ ] Multiplayer - Realtime
+
+## 1.3
 * [ ] Scripting - Custom Code
 * [ ] Scripting - User Lib
 * [ ] Scripting - Leaderboard Lib
@@ -100,12 +107,12 @@
 * [ ] Scripting - CMS Lib
 * [ ] Scripting - Notifications Lib
 
-## 1.2
+## 1.4
 * [ ] Client SDK - iOS
 * [ ] Client SDK - Android
 * [ ] Client SDK - Windows Phone
 * [ ] Client SDK - Windows Desktop
 
-## 1.3
+## 1.5
 * [ ] Server - Export data
 * [ ] Server - Log browser
