@@ -1,4 +1,4 @@
-# Wiretap Server Features
+# Wiretap Server - Features
 
 ## Summary
 * User Management
@@ -25,13 +25,11 @@
 ### Anonymous
 
 ## Leaderboards
-
 * Regular
 * Reverse Ordered
 * Geographic Filtering (City and/or Country)
 
 ## Achievements
-
 * Regular
 * Progress Based
 
@@ -45,7 +43,6 @@
 Push Notifications are targeted at Users with the Wiretap server retrieving all of the user's registered devices and mapping the notification to the device (and its respective platform).
 
 ### Supported Platforms
-
 * iOS
 * OSX
 * Android

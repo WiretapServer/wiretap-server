@@ -1,4 +1,4 @@
-# Wiretap Server Deployment
+# Wiretap Server - Deployment
 
 ## [Heroku](http://heroku.com) (preferred)
 

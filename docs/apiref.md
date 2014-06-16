@@ -60,38 +60,41 @@ This will return `200` and a `session_token`. If the username or password is inc
 
 ### Achievements
 
+### Leaderboards
 
+* `Get /leaderboards.json` Retrieve Leaderboards
 
-## Project Setup
+This will return `200` and a JSON response with the list of leaderboards:
+```json
+{
+  "response": {
+    "leaderboards": [
+      {
+        "id": 1,
+        "leaderboard_name": "level1",
+        "leaderboard_type": "points",
+        "reverse": false,
+        "created_at": "2014-06-01 18:00:43 +0400",
+        "updated_at": "2014-06-01 18:00:43 +0400"
+      }
+    ]
+  },
+  "time": 1402858444
+}
+```
 
-1. Checkout code
-1. Bundle gems: `bundle install`
-1. Run server: `ruby ccd.rb`
+* `POST /leaderboards.json` Create Leaderboard
 
-## Dependencies
+```json
+{
+  "name":"level1",
+  "type":"points",
+  "reverse":false
+}
+```
+This will return `201` and the generated `leaderboard_id`. If the leaderboard already exists it will return `409` and `error: Leaderboard name already in use`.
 
-### Corona Labs Website
+* `Get /leaderboards/:id.json` Retrieve Scores from a Leaderboard
+* `POST /leaderboards/:id/score.json` Submit a new High Score
 
-The CCD web service authenticates users via the Corona Labs website using the external login API.
-
-### Database
-
-WireTap Server uses PostgreSQL and Redis. Postgres as an operational datastore and Redis as a cache.
-
-## Deployment
-
-**TBD**
-
-## Testing
-
-1. Checkout code
-1. Bundle gems: `bundle update`
-1. Run tests: `ruby ccd_tests.rb`
-
-## TODO
-
-- Retrieve questions API
-- Submit answers API
-- Forward results via Email
-- Update docs with responses
-- Tests
+### Devices
