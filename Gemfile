@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-ruby "2.1.0"
+ruby "2.1.3"
 
 gem 'sinatra'
 gem 'puma'
@@ -18,4 +18,5 @@ group :development, :test do
 	gem 'minitest'
 	gem 'rack-test'
 	gem 'sqlite3'
+	gem 'rake'
 end

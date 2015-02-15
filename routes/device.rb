@@ -28,6 +28,15 @@ class WiretapServer < Sinatra::Application
     return jr(201, "New Device Registered: " << device[:id].to_s)
   end
 
+  delete "/devices.json" do
+    user_protected!
+    user = get_user
+
+    # TODO:
+    # - Find the device
+    # - Mark as inactive
+  end
+
   post "/users/:id/push.json" do
     admin_protected!
 

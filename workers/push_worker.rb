@@ -1,5 +1,5 @@
 require 'sidekiq'
-require 'rest_client'
+require_relative '../helpers/webhook.rb'
 
 # Push Notifications Sidekiq worker
 class PushWorker
@@ -10,7 +10,7 @@ class PushWorker
 
     case device["platform_type"]
     when "webhook"
-      response = RestClient.post device["device_identifier"], message.to_json, :content_type => :json
+      WebHook.send_message(device["device_identifier"], message)
     else
       puts "Unsupported platform"
     end
