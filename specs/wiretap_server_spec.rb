@@ -3,7 +3,7 @@ require 'rack/test'
 require 'minitest'
 require 'minitest/autorun'
 
-set :environment, :test
+#set :environment, :test
 
 class WiretapServerTest < Minitest::Test
   include Rack::Test::Methods

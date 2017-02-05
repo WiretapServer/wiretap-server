@@ -1,14 +1,14 @@
 source 'http://rubygems.org'
-ruby "2.1.3"
+ruby "2.4.0"
 
 gem 'sinatra'
+gem 'sinatra-namespace'
 gem 'puma'
 gem 'rest-client'
 gem 'json'
 gem 'sequel'
 gem 'pg'
 gem 'bcrypt'
-gem 'rest_client'
 gem 'sidekiq'
 
 # gem 'redis'

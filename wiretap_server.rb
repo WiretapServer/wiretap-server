@@ -4,7 +4,8 @@
 #
 #
 
-require 'sinatra'
+require 'sinatra/base'
+require 'sinatra/namespace'
 require 'json/ext'
 require 'restclient'
 require 'base64'
@@ -15,6 +16,7 @@ SERVER_VERSION = "0.1"
 SERVER_NAME = "Wiretap Server"
 
 class WiretapServer < Sinatra::Application
+  register Sinatra::Namespace
   enable :sessions
   set :session_secret, 'fzyv4w4B61TQx6G'
 
@@ -37,8 +39,8 @@ class WiretapServer < Sinatra::Application
   end
 
   error do
-    "Sorry! Something went wrong :( We're on it!"
     puts "Error: " + env['sinatra.error'].name
+    "Sorry! Something went wrong :( We're on it!"
   end
 end
 
