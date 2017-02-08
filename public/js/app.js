@@ -1,13 +1,17 @@
-'use strict';
+App = Ember.Application.create();
 
+App.Router.map(function() {
+    this.resource('Users', { path: '/users' }); 
+});
 
-/* App Module */
+App.IndexRoute = Ember.Route.extend({
+  model: function() {
+    return ['red', 'yellow', 'blue'];
+  }
+});
 
-angular.module('wiretap', []).
-  config(['$routeProvider', function($routeProvider) {
-  $routeProvider.
-  	  when('/', {controller: PingCtrl}).
-      when('/phones', {templateUrl: 'partials/phone-list.html',   controller: PhoneListCtrl}).
-      when('/phones/:phoneId', {templateUrl: 'partials/phone-detail.html', controller: PhoneDetailCtrl}).
-      otherwise({redirectTo: '/'});
-}]);
+App.UsersRoute = Ember.Route.extend({
+    model: function () {
+        return ['ali']
+    }
+})
