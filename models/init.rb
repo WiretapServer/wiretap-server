@@ -10,7 +10,7 @@ else
 end
 
 require_relative 'user'
-# require_relative 'quest'
+require_relative 'quest'
 # require_relative 'item'
 require_relative 'achievement'
 require_relative 'unlocked_achievement'
