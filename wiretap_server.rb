@@ -11,6 +11,8 @@ require 'restclient'
 require 'base64'
 require 'openssl'
 require 'newrelic_rpm'
+require 'sequel'
+require 'pg'
 
 SERVER_VERSION = "0.1"
 SERVER_NAME = "Wiretap Server"
@@ -44,8 +46,18 @@ class WiretapServer < Sinatra::Application
   end
 end
 
+# Configure Database
+if ENV['RACK_ENV'] == 'production'
+  DB = Sequel.connect(ENV['DATABASE_URL'])
+elsif ENV['RACK_ENV'] == 'staging'
+  DB = Sequel.connect(ENV['DATABASE_URL_STAGING'])
+else
+  DB = Sequel.sqlite(ENV['DATABASE_URL_DEV'])
+end
 
-
-require_relative 'models/init'
+# Load Models
+Dir[File.join(".", "./models/*.rb")].each do |f|
+  require f
+end
 require_relative 'helpers/init'
 require_relative 'routes/init'
