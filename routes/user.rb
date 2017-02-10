@@ -25,9 +25,9 @@ class WiretapServer < Sinatra::Application
       data = JSON.parse request.body.read
 
       # Retrieve user
-      user = User.first(:email => data['email'])
+      user = User[email: data['email']]
 
-      if user&.check_password(data[:password]) 
+      if user&.check_password(data['password']) 
         res_hash = Hash.new
         res_hash[:user_id] = user[:id]
 
@@ -55,7 +55,7 @@ class WiretapServer < Sinatra::Application
 
     get "/user/logout.json" do
       user_protected!
-      user = get_user_from_sessions
+      user = get_user_from_session
       user.logout
 
       return jr(200, "Successfully logged out!")

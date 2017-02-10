@@ -36,19 +36,13 @@ class WiretapServer < Sinatra::Application
   end
 
   error do
-    puts "Error: " + env['sinatra.error'].name
+    puts "Error: " + env['sinatra.error'].name.to_s
     "Sorry! Something went wrong :( We're on it!"
   end
 end
 
 # Configure Database
-if ENV['RACK_ENV'] == 'production'
-  DB = Sequel.connect(ENV['DATABASE_URL'])
-elsif ENV['RACK_ENV'] == 'staging'
-  DB = Sequel.connect(ENV['DATABASE_URL_STAGING'])
-else
-  DB = Sequel.connect(ENV['DATABASE_URL_DEV'])
-end
+DB = Sequel.connect(ENV['DATABASE_URL'])
 
 # Load Models
 Dir[File.join(".", "./models/*.rb")].each do |f|

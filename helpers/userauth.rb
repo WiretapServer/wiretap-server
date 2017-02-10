@@ -9,8 +9,8 @@ module UserAuth
     return st
   end
 
-  def get_user_from_sessions
-    return User.find(session_token: request.env["HTTP_X_USER_SESSION"])
+  def get_user_from_session
+    return User[session_token: request.env["HTTP_X_USER_SESSION"]]
   end
 
   def user_protected!
@@ -19,7 +19,7 @@ module UserAuth
 
   def user_authorized?
     session_token = request.env["HTTP_X_USER_SESSION"]
-    user = get_user if session_token
+    user = get_user_from_session if session_token
     return true if user
   end
 
