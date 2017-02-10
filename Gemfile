@@ -10,6 +10,7 @@ gem 'sequel'
 gem 'pg'
 gem 'bcrypt'
 gem 'sidekiq'
+gem 'rake'
 
 # gem 'redis'
 gem 'newrelic_rpm'
@@ -18,5 +19,4 @@ group :development, :test do
 	gem 'minitest'
 	gem 'rack-test'
 	gem 'sqlite3'
-	gem 'rake'
 end
