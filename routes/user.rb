@@ -63,7 +63,7 @@ class WiretapServer < Sinatra::Application
 
     get "/user/ping.json" do
       user_protected!
-      return 200
+      return jr(200, "pong!")
     end
 
   end
