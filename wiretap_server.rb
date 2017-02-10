@@ -31,11 +31,6 @@ class WiretapServer < Sinatra::Application
     # ...
   end
 
-  helpers do
-    #include Rack::Utils
-    #alias_method :h, :escape_html
-  end
-
   not_found do
     'This is nowhere to be found.'
   end
@@ -59,5 +54,11 @@ end
 Dir[File.join(".", "./models/*.rb")].each do |f|
   require f
 end
+
+# Load Routes
+Dir[File.join(".", "./routes/*.rb")].each do |f|
+  require f
+end
+
+# Load Helpers
 require_relative 'helpers/init'
-require_relative 'routes/init'
