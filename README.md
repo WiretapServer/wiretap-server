@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/WiretapServer/wiretap-server.svg?style=svg)](https://circleci.com/gh/WiretapServer/wiretap-server)
+
 # _Wiretap Server_  
 This is the Web Service component of the Wiretap game.
 
