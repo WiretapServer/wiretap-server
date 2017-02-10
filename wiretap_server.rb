@@ -47,7 +47,7 @@ if ENV['RACK_ENV'] == 'production'
 elsif ENV['RACK_ENV'] == 'staging'
   DB = Sequel.connect(ENV['DATABASE_URL_STAGING'])
 else
-  DB = Sequel.sqlite(ENV['DATABASE_URL_DEV'])
+  DB = Sequel.connect(ENV['DATABASE_URL_DEV'])
 end
 
 # Load Models
