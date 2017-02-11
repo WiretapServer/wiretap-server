@@ -14,6 +14,7 @@ class User < Sequel::Model
 
   # Relations
   one_to_many :scores
+  one_to_many :unlocked_achievements
 
   def password=(password)
     self.password_salt = SecureRandom.base64(16)

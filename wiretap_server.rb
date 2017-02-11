@@ -42,6 +42,7 @@ class WiretapServer < Sinatra::Application
 end
 
 # Configure Database
+Sequel::Model.plugin :update_or_create
 DB = Sequel.connect(ENV['DATABASE_URL'])
 
 # Load Models

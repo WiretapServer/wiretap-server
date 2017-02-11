@@ -1,7 +1,6 @@
 require 'securerandom'
 
 module UserAuth
-
   def gen_token(user)
     st = SecureRandom.hex(16)
     user[:session_token] = st
@@ -22,5 +21,4 @@ module UserAuth
     user = get_user_from_session if session_token
     return true if user
   end
-
 end
