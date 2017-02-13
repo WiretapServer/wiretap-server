@@ -19,4 +19,5 @@ group :development, :test do
 	gem 'minitest-hooks'
 	gem 'rack-test'
 	gem 'sqlite3'
+  gem 'pry'
 end
