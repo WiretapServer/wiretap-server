@@ -3,3 +3,4 @@ log
 .env
 wiretap.db
 dump.rdb
+.projections.json

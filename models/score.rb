@@ -14,11 +14,20 @@ class Score < Sequel::Model
   many_to_one  :leaderboard
   many_to_one  :user
 
-  def self.create(s)
-    update_or_create(user: s[:user], leaderboard: s[:leaderboard]) do |score|
-      score.score = s[:score]
-      score.country = s[:country] if s[:country]
-      score.city = s[:city] if s[:city]
+  def self.upsert(args)
+    s = self.find_or_create(user: args[:user], leaderboard: args[:leaderboard]) do |score|
+      score.value = args[:value] 
+      return
+    end
+    s.update(value: args[:value]) if s.better_score?(args[:value])
+  end
+
+  def better_score?(new_value)
+    case leaderboard.reverse
+    when true
+      return new_value < value
+    else
+      return new_value > value
     end
   end
 end

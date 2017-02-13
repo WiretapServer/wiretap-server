@@ -6,7 +6,7 @@ Sequel.migration do
 
       Integer  :user_id
       Integer  :leaderboard_id
-      Float    :score
+      Float    :value
       String   :country #2 Digit Country Code
       String   :city
 

@@ -12,11 +12,11 @@ gem 'bcrypt'
 gem 'sidekiq'
 gem 'rake'
 
-# gem 'redis'
 gem 'newrelic_rpm'
 
 group :development, :test do
 	gem 'minitest'
+	gem 'minitest-hooks'
 	gem 'rack-test'
 	gem 'sqlite3'
 end

@@ -9,7 +9,7 @@ Sequel.migration do
       String  :unlocked_description
       Integer :points
       String  :image #URL to image
-      String  :achievement_type #regular or progress
+      Integer :achievement_type #regular or progress
       Boolean :hidden #if true then hide description until unlocked
 
       Timestamp  :created_at

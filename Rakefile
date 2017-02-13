@@ -2,6 +2,7 @@ require 'rake/testtask'
 
 Rake::TestTask.new do |t|
   t.pattern = "specs/*_spec.rb"
+  t.pattern = "specs/models/*_spec.rb"
 end
 
 namespace :db do

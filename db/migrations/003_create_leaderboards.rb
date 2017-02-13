@@ -6,7 +6,7 @@ Sequel.migration do
 
       String  :leaderboard_name
       String  :leaderboard_type
-      Boolean :reverse #if true then descending
+      Boolean :reverse, default: false 
 
       Timestamp  :created_at
       Timestamp  :updated_at

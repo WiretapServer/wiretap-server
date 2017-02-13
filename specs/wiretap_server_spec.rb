@@ -1,7 +1,8 @@
-require './wiretap_server'
-require 'rack/test'
-require 'minitest'
-require 'minitest/autorun'
+#require './wiretap_server'
+#require 'rack/test'
+#require 'minitest'
+#require 'minitest/autorun'
+require './specs/test_helper'
 
 #set :environment, :test
 
