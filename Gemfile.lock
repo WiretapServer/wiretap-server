@@ -16,6 +16,8 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     minitest (5.10.1)
+    minitest-ci (3.1.0)
+      minitest (~> 5.0, >= 5.0.6)
     minitest-hooks (1.4.0)
     multi_json (1.12.1)
     netrc (0.11.0)
@@ -70,6 +72,7 @@ DEPENDENCIES
   bcrypt
   json
   minitest
+  minitest-ci
   minitest-hooks
   newrelic_rpm
   pg
