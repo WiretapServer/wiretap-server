@@ -1,12 +1,18 @@
-#class Message
-  #include DataMapper::Resource
+# Message Class
+class Message < Sequel::Model
+  plugin :validation_helpers
+  plugin :timestamps, :update_on_create => true, :update=>:updated_at
 
-  #property :id, Serial
-  #property :created_at, DateTime
-  #property :updated_at, DateTime  
-  #property :content, Text
-  #property :read, Boolean
+  many_to_one :from, class: :User, key: :from_id
+  many_to_one :to, class: :User, key: :to_id
 
-  #belongs_to :from, 'User'
-  #belongs_to :to, 'User'
-#end
+  def validate
+    super
+    validates_presence [:from, :to, :content]
+  end
+
+  def mark_as_read
+    self.read = true
+    save_changes
+  end
+end

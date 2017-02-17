@@ -1,7 +1,7 @@
 # Unlocked Achievements Class
 class UnlockedAchievement < Sequel::Model
   plugin :validation_helpers
-  plugin :timestamps, :update_on_create => true
+  plugin :timestamps, :update_on_create => true, :update=>:updated_at
 
   # Validation
   def validate
